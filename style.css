@@ -96,3 +96,9 @@ p{
     cursor: pointer;
     font-size: 1rem;
     }
+
+.footer{
+    font-size: 3rem;
+    font-weight: bold;
+    color: #000000;
+}
