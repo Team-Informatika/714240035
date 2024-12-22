@@ -1,104 +1,213 @@
-body {
-    font-family: Arial, sans-serif;
+:root{
+    --orange:##ff7300
+}
+
+*{
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f9;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    text-transform: .2s linear;
 }
 
-.id-card {
-    width: 350px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    text-align: center;
+html{
+    font-size: 62.5%;
+    scroll-behavior:smooth;
+    scroll-padding-top: 6 rem;
+    overflow-x: hidden;
+}
+/* dari sini */
+section{
+    padding: 2rem 9%;
 }
 
-.id-card .header {
-    background-color: #ff4800;
-    color: white;
-    padding: 10px 0;
-    font-size: 18px;
-    font-weight: bold;
-}
 
-.id-card .photo {
-    margin: 20px auto;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    background-color: #ddd;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.id-card .photo img {
-    width: 100%;
-    height: auto;
-}
-
-.id-card .info {
-    padding: 10px;
-}
-
-.id-card .info h2 {
-    margin: 0;
-    font-size: 20px;
-    color: #333;
-}
-
-.id-card .info p {
-    margin: 5px 0;
-    color: #666;
-}
-
-.qr-code {
-    margin: 20px auto;
-    width: 120px;
-    height: 120px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
-}
-
-.qr-code img {
-    width: 100%;
-    height: auto;
-}
-
-.id-card .footer {
-    background-color: #f4f4f4;
-    padding: 10px;
-    font-size: 12px;
-    color: #888;
-}
-p{
-    font-weight: bold;
-}
-.logo{
-}
-
-.tes{
-    background-color: #888;
+.btn{
     display: inline-block;
+    margin-top: 1rem;
     border-radius: 5rem;
-    background: #ff4800;
-    color: #fff;
-    padding: 0.9rem 2rem ;
+    background: #ffffff;
+    color: #000000;
+    padding: 0.9rem 3.5rem ;
     cursor: pointer;
-    font-size: 1rem;
-    }
+    font-size: 1.7rem;
+}
 
-.footer{
+.btn:hover{
+    background: #ff6a00;   
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+
+
+.home{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    background: url(images/Alia\ bg\ 1.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.home .content{
+    max-width: 50rem;
+}
+.home .content h3{
+    font-size: 22rem;
+    color: #ffffff;
+}
+
+.home .content span{
+    font-size: 3.5rem;
+    padding: 1rem 0;
+    line-height: 1.5;
+}
+.home .content span{
     font-size: 3rem;
     font-weight: bold;
+}
+
+.home .content p{
+    font-size: 1.8rem;
     color: #000000;
+    padding: 1rem 0;
+    line-height: 1.5;
+}
+
+.about .row{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    padding-bottom: 3rem;
+}
+
+.about .row .img{
+    flex: 1 1 40rem;
+    position: relative;
+}
+
+.about .row .video-container img{
+    width: 100%;
+    border: 0.5rem solid #ffa600;
+    border-radius: 5rem;
+    box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, .1);
+    height: 100%;
+    object-fit: cover;
+}
+
+.about .row .content{
+    flex: 1 1 40rem;
+}
+
+.about .row .content h3{
+    font-size: 3rem;
+    color: #000000;
+}
+
+.about .row .content p{
+    font-size: 1.5rem;
+    color: #000000;
+    padding: 5rem 0;
+    padding-top: 1rem;
+    line-height: 1.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media queries */
+
+
+@media (max-width: 991px) {
+    html{
+    font-size: 55%; 
+    }
+
+    header{
+        padding: 2rem;
+    }
+
+    section{
+        padding: 2rem;
+    }
+    
+    .home{
+        background-position: center;
+    }
+
+}
+
+    @media (max-width: 768px){
+    header .fa-bars{
+        display: block;
+    }
+
+    header .navbar{
+        position: absolute;
+        width: 240px;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.774);
+        height: 100vh;
+        clip-path: polygon(0 0,100% 0, 0 0);
+    }
+
+    header #toggler:checked ~ .navbar{
+        clip-path: polygon(0 0,100% 0, 100% 100%, 0% 100%);
+    }
+    header .navbar a{
+        margin: 1rem;
+        padding: 1rem;
+        color: #fff;
+        background: #ff8e3d;
+        border: .5rem solid rgba(29, 14, 3, 0.1);
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+        border-radius: 2rem;
+    }
+
+    .home .content h3{
+        font-size: 5rem;
+    }
+
+    .home .content span{
+        font-size: 2.5rem;
+    }
+
+
+
+
+}
+
+    @media (max-width: 450px) {
+        html{
+        font-size: 50%;
+        }
+    
+        header{
+            padding: 2rem;
+        }
+
 }
