@@ -2,14 +2,14 @@ import{renderHTML, setInner, onClick} from 'https://cdn.jsdelivr.net/gh/jscroot/
 
 onClick("github",github);
 
-//function github(){
-  //  window.open('https://github.com/duapuluhsatu21');
-//}
+// function github(){
+//    window.open('https://github.com/duapuluhsatu21');
+// }
 
-//function github(){
- //  renderHTML ('github','/render.html');
-//}
+// function github(){
+//   renderHTML ('github','/render.html');
+// }
 
-function youtube(){
+function github(){
     setInner('github',"harap melihat profile github ku!")
 }
