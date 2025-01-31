@@ -60,7 +60,6 @@ section{
     display: flex;
     align-items: center;
     min-height: 100vh;
-    background: url(images/Alia\ project\ baru.jpg) no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -70,7 +69,7 @@ section{
 }
 .home .content h3{
     font-size: 22rem;
-    color: #ffffff;
+    color: #000000;
 }
 
 .home .content span{
