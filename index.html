@@ -1,101 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil diri</title>
-
-    <!-- font awesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    
-    <!-- custom css file link -->
-    <link rel="stylesheet" href="style.css">
-    <script type="module" src="main.js"></script>
-</head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profil Diri</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-    <!-- Home section star -->
+  <div id="profile-card">
+    <img id="profile-image" alt="Profile Image">
+    <h1 id="profile-name"></h1>
+    <p id="profile-age"></p>
+    <p id="profile-location"></p>
+    <p id="profile-bio"></p>
+  </div>
 
-    <section class="home" id="home">.
-    <div class="content">
-        <h3>Hi, I'am <br>Wd. Nur Alia</h3>
-        <span>Design Graphic & Front end Developer</span>
-        <p>Scrol for know me more :))</p>
-        <a href="https://wa.me/qr/Y5FYVXL3U444K1" class="btn">Contact me</a>
-    </div>
-    </section> 
-
-    <!-- about section start -->
-    
-    <section class="about" id="about">
-
-        <h1 class="heading"> About Me </h1>
-
-        <div class="row">
-        <div class="video-container">
-            <img src="images/aliaa bg.jpg">
-
-            <p class="btn-1">Halo, perkenalkan nama saya Wa ode Nur Alia, Saya memiliki keahlian dalam pengembangan web menggunakan span HTML, CSS, dan JavaScript, serta kemampuan desain grafis.</p>
-            <p class="btn-1"><span>Manfaat Logo dan Website untuk Kesuksesan Bisnis</span>
-                <br><br>-Desain logo yang menarik dan unik meningkatkan kredibilitas dan daya saing produk Anda di pasar.
-                <br><br>-Website Berkualitas
-                <br>Website adalah "toko digital" Anda yang dapat diakses 24/7 oleh calon pelanggan.
-            <p class="btn-1"> <span>Jasa Desain & Pembuatan Website :</span>
-                <br><br>Kami menawarkan solusi kreatif melalui jasa desain grafis dan pembuatan website untuk mendukung kebutuhan Anda di era digital.</p>
-                <a href="https://wa.me/qr/Y5FYVXL3U444K1" class="btn-3"> Hubungi saya untuk kerjasama</a>
-        </div>
-
-    <div class="content" id="Konten">
-        <h3>my portfolio</h3>
-        <p>Avaliable to Zoom in/out</p>
-        <h4>*Front End Developer*</h4>
-        <a class="btn-2" href="https://agobangka.id.biz.id/">https://agobangka.id.biz.id/</a>
-        <section class="icons-container">
-
-            <div class="icons">
-                <img src="images/p11.jpg">
-                
-            </div>
-
-        </section>
-    </div>
-
-    <div class="content" id="Konten">
-        <h4>*Design Graphic*</h4>
-        <section class="icons-container">
-
-            <div class="icons">
-                <img src="images/p1.jpg">
-            </div>
-
-            <div class="icons">
-                <img src="images/p 2.jpg">
-            </div>
-
-            <div class="icons">
-                <img src="images/p4.jpg">
-            </div>
-
-            <div class="icons">
-                <img src="images/p 5.jpg">
-            </div>
-        
-        </section>
-    </div>
-     <!-- footer section -->
-
-     <section class="footer" id="last">
-
-    <div class="credit"> created by <span> Nuraliaaw</span>*THANKYOU</div>
-    </section>
-
-        </div>
-    </div>
-
-    <script type="module" src="index.js"></script>
-    <button id="github" type="submit">github</button>
-
-
-    
+  <script>
+    fetch('profile.json')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('profile-name').textContent = data.name;
+        document.getElementById('profile-age').textContent = 'Usia: ' + data.age;
+        document.getElementById('profile-location').textContent = 'Lokasi: ' + data.location;
+        document.getElementById('profile-bio').textContent = data.bio;
+        document.getElementById('profile-image').src = data.image;
+      })
+      .catch(error => console.error('Error fetching the data:', error));
+  </script>
 </body>
-</html>     
+</html>
