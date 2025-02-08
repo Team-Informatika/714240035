@@ -1,3 +1,9 @@
+import { getJSON } from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/api.js"
+
+document.addEventListener("DOMContentLoaded", function () {
+  getJSON("https://t.if.co.id/json/NurAliaa.json", null, null, responseFunction);
+});
+
 fetch('profile.json')
 .then(response => response.json())
 .then(data => {
