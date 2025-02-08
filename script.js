@@ -11,7 +11,7 @@ function responseFunction(data) {
     document.getElementById('profile-name').textContent = data.name || 'Waode Nur Alia';
     document.getElementById('profile-bio').textContent = data.bio || 'Hai gaissuu';
     document.getElementById('profile-rate').innerHTML = `<strong>Tarif:</strong> ${data.rate || '$4'}`;
-    //document.getElementById('profile-image').src = data.image || 'default-image.jpg'; // Ganti dengan gambar default jika tidak ada
+    document.getElementById('profile-image').src = data.image || 'default-image.jpg'; // Ganti dengan gambar default jika tidak ada
 
     // Menampilkan keterampilan
     const skillsContainer = document.getElementById('profile-skills');
