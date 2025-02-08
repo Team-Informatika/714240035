@@ -1,31 +1,54 @@
-import { getJSON } from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/api.js";
+$(document).ready(function () {
+  const profileList = $('#profile-list');
+  const profileCard = $('#profile-card');
+  const closeBtn = $('#close-btn');
 
-document.addEventListener("DOMContentLoaded", function () {
-  getJSON("https://t.if.co.id/json/NurAliaa.json", null, null, responseFunction);
-});
+  // Elemen detail
+  const profileName = $('#profile-name');
+  const profileImage = $('#profile-image');
+  const profileBio = $('#profile-bio');
+  const profileRate = $('#profile-rate');
+  const profileSkills = $('#profile-skills');
 
-function responseFunction(data) {
-  // Pastikan data yang diterima memiliki struktur yang benar
-  if (data) {
-    // Mengupdate elemen dengan data yang diterima
-    document.getElementById('profile-name').textContent = data.name || 'Waode Nur Alia';
-    document.getElementById('profile-bio').textContent = data.bio || 'Hai gaissuu';
-    document.getElementById('profile-rate').innerHTML = `<strong>Tarif:</strong> ${data.rate || '$4'}`;
-    document.getElementById('profile-image').src = data.image || 'default-image.jpg'; // Ganti dengan gambar default jika tidak ada
+  // Ambil data dari URL menggunakan getJSON
+  $.getJSON('https://t.if.co.id/json/Nuraliaa.json', function (profiles) {
+    // Tampilkan daftar nama
+    profiles.forEach(profile => {
+      let li = $('<li>');
+      let a = $('<a>').attr('href', '#').text(profile.name).attr('data-id', profile.id);
+      li.append(a);
+      profileList.append(li);
+    });
 
-    // Menampilkan keterampilan
-    const skillsContainer = document.getElementById('profile-skills');
-    skillsContainer.innerHTML = ''; // Kosongkan kontainer sebelum menambahkan keterampilan
-    if (data.skills && data.skills.length > 0) {
-      data.skills.forEach(skill => {
-        const skillElement = document.createElement('li');
-        skillElement.textContent = `${skill.name} - Level: ${skill.level}`;
-        skillsContainer.appendChild(skillElement);
+    // Event listener untuk klik nama
+    profileList.on('click', 'a', function (e) {
+      e.preventDefault();
+      const profileId = parseInt($(this).data('id'));
+      const selectedProfile = profiles.find(p => p.id === profileId);
+
+      // Masukkan data ke dalam kartu profil
+      profileName.text(selectedProfile.name);
+      profileImage.attr('src', selectedProfile.image);
+      profileBio.text(selectedProfile.bio);
+      profileRate.html(`<strong>Tarif:</strong> ${selectedProfile.rate}`);
+
+      // Bersihkan skill dan tambahkan yang baru
+      profileSkills.empty();
+      selectedProfile.skills.forEach(skill => {
+        let li = $('<li>').text(`${skill.name} (${skill.level})`);
+        profileSkills.append(li);
       });
-    } else {
-      skillsContainer.innerHTML = '<li>Keterampilan tidak tersedia</li>';
-    }
-  } else {
-    console.error('Data tidak ditemukan');
-  }
-}
+
+      // Tampilkan kartu
+      profileCard.removeClass('hidden');
+    });
+
+    // Tutup kartu profil
+    closeBtn.on('click', function () {
+      profileCard.addClass('hidden');
+    });
+
+  }).fail(function () {
+    console.error("Gagal mengambil data dari URL");
+  });
+});
