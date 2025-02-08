@@ -8,33 +8,5 @@
 </head>
 <body>
   <div id="profile-card"></div>
-
-  <script>
-    // Load HTML content
-    fetch('profile.html')
-      .then(response => response.text())
-      .then(html => {
-        document.getElementById('profile-card').innerHTML = html;
-
-        // Load JSON data
-        fetch('profile.json')
-          .then(response => response.json())
-          .then(data => {
-            document.getElementById('profile-name').textContent = data.name;
-            document.getElementById('profile-bio').textContent = data.bio;
-            document.getElementById('profile-image').src = data.image;
-            document.getElementById('profile-rate').textContent = data.rate;
-
-            const skillsList = document.getElementById('skills-list');
-            data.skills.forEach(skill => {
-              const li = document.createElement('li');
-              li.textContent = `${skill.name}: ${skill.level}`;
-              skillsList.appendChild(li);
-            });
-          })
-          .catch(error => console.error('Error fetching JSON data:', error));
-      })
-      .catch(error => console.error('Error fetching HTML content:', error));
-  </script>
 </body>
 </html>
