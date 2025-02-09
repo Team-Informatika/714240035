@@ -27,14 +27,13 @@ ul li a {
   background: white;
   margin: 5px 0;
   text-decoration: none;
-  color: #007bff;
+  color: #000000;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  transition: background 0.3s ease;
 }
 
 ul li a:hover {
-  background: #007bff;
+  background: #ff9074;
   color: white;
 }
 
@@ -59,7 +58,7 @@ ul li a:hover {
   height: 120px;
   border-radius: 50%;
   margin: 10px 0;
-  border: 3px solid #007bff;
+  border: 3px solid #ff9074;
 }
 
 /* Styling keterampilan */
@@ -69,7 +68,7 @@ ul li a:hover {
 }
 
 .profile-card ul li {
-  background: #007bff;
+  background: #ff9074;
   color: white;
   display: inline-block;
   padding: 8px 12px;
