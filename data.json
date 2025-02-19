@@ -1,0 +1,46 @@
+{
+    "card": {
+      "avatar": {
+        "src": "https://t.if.co.id/714240035/POCOYO.jpeg",
+        "alt": "Foto profil"
+      },
+      "details": {
+        "name": "Wa Ode Nur Alia",
+        "about": [
+          {
+            "value": "Hello, I am an informatics engineering student who has the following skills",
+            "label": "About"
+          }
+
+        ],
+        "rate_day": {
+          "price": "$3",
+          "rate": "Rate/Day"
+        },
+
+        "skills": {
+          "list": [
+            { "name": "Java", "level": "Intermediate" },
+            { "name": "Greenfoot", "level": "Advanced" },
+            { "name": "HTML & CSS", "level": "Intermediate" },
+            { "name": "JSON", "level": "Beginner" }
+          ]
+        },
+        "social_links": [
+          {
+            "platform": "Instagram",
+            "url": "https://www.instagram.com/nuraliaaw?igsh=MTJsMzMwZmV2aHAzeg=="
+          },
+          {
+            "platform": "GitHub",
+            "url": "https://github.com/Aliaawz"
+          },
+          {
+            "platform": "Contact Me",
+            "url": "https://wa.me/085283751548"
+          }
+        ]
+      }
+    }
+  }
+  
