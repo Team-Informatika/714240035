@@ -2,17 +2,18 @@ import { getJSON } from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/api.js";
 import { renderHTML, setInner } from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/element.js";
 import { getHash, onHashChange } from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/url.js";
 
-// Fungsi untuk memuat halaman berdasarkan hash
-function loadPage() {
-    const page = getHash() || "home";
-    renderHTML("content", `${page}.html`);
+onHashChange(muncul);
+
+renderHTML('ini', 'home.html')
+
+function muncul() {
+  console.log(getHash());
+  const hashpath = getHash();
+  if (hashpath === 'content') {
+    console.log("kedetek");
+    renderHTML('ini', "home.html", renderDataKartu);
+  }
 }
-
-// Jalankan saat pertama kali halaman dimuat
-loadPage();
-
-// Jalankan saat hash berubah
-onHashChange(loadPage);
 
 // Ambil data dari JSON dan render ke halaman
 getJSON("https://t.if.co.id/json/Nuraliaa.json", null, null, responseFunction);
