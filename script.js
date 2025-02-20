@@ -1,10 +1,20 @@
 import { getJSON } from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/api.js";
-import { renderHTML } from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/element.js";
+import { renderHTML, setInner } from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/element.js";
+import { getHash, onHashChange } from "https://cdn.jsdelivr.net/gh/jscroot/lib@0.2.0/url.js";
 
-// Render halaman
-renderHTML("ini", "home.html");
+// Fungsi untuk memuat halaman berdasarkan hash
+function loadPage() {
+    const page = getHash() || "home";
+    renderHTML("content", `${page}.html`);
+}
 
-// Ambil data dari JSON
+// Jalankan saat pertama kali halaman dimuat
+loadPage();
+
+// Jalankan saat hash berubah
+onHashChange(loadPage);
+
+// Ambil data dari JSON dan render ke halaman
 getJSON("https://t.if.co.id/json/Nuraliaa.json", null, null, responseFunction);
 
 function responseFunction(response) {
@@ -13,44 +23,36 @@ function responseFunction(response) {
     const data = response.data.card;
     
     // Render avatar
-    console.log("Avatar Data:", data.avatar); // Debugging avatar
-    const avatarHTML = `<img src="${data.avatar.src}" alt="${data.avatar.alt}" onclick="openModal('${data.avatar.src}')">`;
-    document.getElementById("avatar").innerHTML = avatarHTML;
+    console.log("Avatar Data:", data.avatar);
+    setInner("avatar", `<img src="${data.avatar.src}" alt="${data.avatar.alt}" onclick="openModal('${data.avatar.src}')">`);
 
     // Render nama
     console.log("Nama:", data.details.name);
-    document.getElementById("nama").textContent = data.details.name;
+    setInner("nama", data.details.name);
 
     // Render about
     console.log("About Data:", data.details.about);
-    const aboutHTML = data.details.about
-        .map((item) => `<p>${item.value}</p>`)
-        .join("");
-    document.getElementById("about").innerHTML = aboutHTML;
+    const aboutHTML = data.details.about.map((item) => `<p>${item.value}</p>`).join("");
+    setInner("about", aboutHTML);
 
     // Render skills
     console.log("Skills List:", data.details.skills.list);
-    const skillsHTML = data.details.skills.list
-        .map((skill) => `<li>${skill}</li>`)
-        .join("");
-    document.getElementById("skills").innerHTML = skillsHTML;
+    const skillsHTML = data.details.skills.list.map((skill) => `<li>${skill}</li>`).join("");
+    setInner("skills", skillsHTML);
 
     // Render hourly rate
     console.log("Harga per Hari:", data.details.rate_day.price);
-    document.getElementById("harga").textContent = data.details.rate_day.price;
+    setInner("harga", data.details.rate_day.price);
     
     console.log("Rate per Hari:", data.details.rate_day.rate);
-    document.getElementById("rate").textContent = data.details.rate_day.rate;
+    setInner("rate", data.details.rate_day.rate);
 
     // Render social links
     console.log("Social Links:", data.details.social_links);
-    const socialLinksHTML = data.details.social_links
-        .map(
-            (link) =>
-                `<a href="${link.url}" target="_blank">${link.platform}</a>`
-        )
-        .join(" | ");
-    document.getElementById("social-links").innerHTML = socialLinksHTML;
+    const socialLinksHTML = data.details.social_links.map(
+        (link) => `<a href="${link.url}" target="_blank">${link.platform}</a>`
+    ).join(" | ");
+    setInner("social-links", socialLinksHTML);
 }
 
 // Fungsi untuk membuka modal
@@ -63,7 +65,7 @@ function openModal(src) {
         return;
     }
 
-    console.log("Membuka Modal dengan Gambar:", src); // Debugging modal
+    console.log("Membuka Modal dengan Gambar:", src);
     modalImage.src = src;
     modal.classList.add("active");
 
@@ -71,6 +73,6 @@ function openModal(src) {
     modal.addEventListener("click", () => {
         console.log("Menutup Modal");
         modal.classList.remove("active");
-        modalImage.src = ""; // Kosongkan src untuk menghindari cache
+        modalImage.src = "";
     });
 }
