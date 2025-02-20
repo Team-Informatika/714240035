@@ -24,7 +24,14 @@ function responseFunction(response) {
     
     // Render avatar
     console.log("Avatar Data:", data.avatar);
-    setInner("avatar", `<img src="${data.avatar.src}" alt="${data.avatar.alt}" onclick="openModal('${data.avatar.src}')">`);
+    setInner("avatar", `<img src="${data.avatar.src}" alt="${data.avatar.alt}" class="avatar">`);
+
+    // Tambahkan event listener untuk modal
+    document.querySelectorAll(".avatar").forEach(img => {
+        img.addEventListener("click", function () {
+            openModal(this.src);
+        });
+    });
 
     // Render nama
     console.log("Nama:", data.details.name);
