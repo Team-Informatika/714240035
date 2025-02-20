@@ -35,6 +35,14 @@ body {
     box-shadow: 0px 4px 10px rgba(255, 182, 193, 0.5);
 }
 
+.card-avatar img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
 /* Nama */
 .name {
     font-size: 22px;
